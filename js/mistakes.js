@@ -1,53 +1,67 @@
-const mistakeForm = document.getElementById("mistake-form");
-const mistakeList = document.getElementById("mistake-list");
+document.addEventListener('DOMContentLoaded', function () {
+  const calendarEl = document.getElementById('calendar');
+  const form = document.getElementById('mistake-form');
+  const dateInput = document.getElementById('mistake-date');
+  const selectedDateLabel = document.getElementById('selected-date-label');
+  const topicInput = document.getElementById('mistake-topic');
+  const textInput = document.getElementById('mistake-text');
+  const mistakeList = document.getElementById('mistake-list');
 
-function getMistakeLogs() {
-  return JSON.parse(localStorage.getItem("mistake-journal")) || [];
-}
+  let mistakeData = JSON.parse(localStorage.getItem('mistakes')) || [];
 
-function saveMistakeLogs(logs) {
-  localStorage.setItem("mistake-journal", JSON.stringify(logs));
-}
-
-function renderMistakes() {
-  const logs = getMistakeLogs();
-  mistakeList.innerHTML = "";
-  logs.forEach((entry, index) => {
-    const li = document.createElement("li");
-    li.className = "mistake-item";
-    li.innerHTML = `
-      <div><strong>${entry.date}</strong> | <b>Topic:</b> ${entry.topic}</div>
-      <div><b>Mistake:</b> ${entry.mistake}</div>
-      <button data-index="${index}" class="delete-mistake">🗑️</button>
-    `;
-    mistakeList.appendChild(li);
+  const calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    selectable: true,
+    height: 'auto',
+    dateClick: function(info) {
+      const selectedDate = info.dateStr;
+      dateInput.value = selectedDate;
+      selectedDateLabel.textContent = selectedDate;
+      form.style.display = 'block';
+    }
   });
 
-  // Delete logic
-  document.querySelectorAll(".delete-mistake").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const i = e.target.dataset.index;
-      const updated = getMistakeLogs();
-      updated.splice(i, 1);
-      saveMistakeLogs(updated);
-      renderMistakes();
+  calendar.render();
+
+  function renderMistakes() {
+    mistakeList.innerHTML = '';
+    mistakeData.forEach((entry, index) => {
+      const li = document.createElement('li');
+      li.className = 'mistake-item';
+      li.innerHTML = `
+        <strong>${entry.date} - ${entry.topic}</strong>
+        <p>${entry.mistake}</p>
+        <button class="delete-mistake" data-index="${index}">🗑️</button>
+      `;
+      mistakeList.appendChild(li);
     });
+  }
+
+  // Submit new mistake
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const date = dateInput.value;
+    const topic = topicInput.value.trim();
+    const mistake = textInput.value.trim();
+
+    if (date && topic && mistake) {
+      mistakeData.push({ date, topic, mistake });
+      localStorage.setItem('mistakes', JSON.stringify(mistakeData));
+      renderMistakes();
+      form.reset();
+      form.style.display = 'none';
+    }
   });
-}
 
-mistakeForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData(mistakeForm);
-  const newEntry = {
-    date: formData.get("date"),
-    topic: formData.get("topic"),
-    mistake: formData.get("mistake")
-  };
-  const logs = getMistakeLogs();
-  logs.push(newEntry);
-  saveMistakeLogs(logs);
+  // Delete mistake
+  mistakeList.addEventListener('click', function (e) {
+    if (e.target.classList.contains('delete-mistake')) {
+      const index = e.target.dataset.index;
+      mistakeData.splice(index, 1);
+      localStorage.setItem('mistakes', JSON.stringify(mistakeData));
+      renderMistakes();
+    }
+  });
+
   renderMistakes();
-  mistakeForm.reset();
 });
-
-renderMistakes();

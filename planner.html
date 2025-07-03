@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Weekly Planner – JAM 2026</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="planner.css" />
 </head>
 <body>
 
@@ -24,11 +25,17 @@
   <!-- Page Content -->
   <main class="container">
     <h1>📅 Weekly Study Planner</h1>
-    <p class="subtext">Set study goals for each week and mark them done when completed.</p>
+    <p class="subtext">All 30 weeks are already planned. Just study and tick done!</p>
 
-    <div id="weekly-planner"></div>
+    <!-- Progress Bar -->
+    <div class="planner-progress-container">
+      <div id="planner-progress-bar" class="planner-progress-bar">0%</div>
+    </div>
+
+    <!-- Weekly Cards Grid -->
+    <div id="weekly-planner" class="week-grid"></div>
   </main>
 
-  <script src="js/planner.js"></script>
+  <script src="planner.js"></script>
 </body>
 </html>

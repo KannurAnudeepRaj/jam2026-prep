@@ -1,82 +1,107 @@
-const revisionEl = document.getElementById("revision-tracker");
+// =======================
+// JAM 2026 – Revision Tracker Script
+// =======================
 
-const syllabusData = {
-  Physical: [
-    "Basic Maths", "Mole Concept", "Thermochemistry", "Thermodynamics (Ved)", "Thermodynamics (Pradeep)",
-    "Liquid State", "Solid State", "Gaseous State", "Phase Equilibrium", "Colligative Properties (CP)",
-    "Chemical Kinetics", "Surface Chemistry", "Ionic Equilibrium", "Chemical Equilibrium",
-    "Acid-Base Theory", "Redox", "Potentiometric Titration", "Conductance",
-    "Quantum Chemistry", "Atomic Structure", "Statistical Thermo", "Physical Spectra"
-  ],
-  Inorganic: [
-    "Basic Inorganic", "Periodic Properties", "Chemical Bonding (Basic)", "Chemical Bonding (Ved)",
-    "MOT", "MOT (Ved)", "Acid-Base & Solvent Theory", "D-Block", "F-Block", "Main Group (Ved)",
-    "Metallurgy", "Coordination Chemistry (Ved)", "Basic Coordination", "Bio Inorganic", "Weak Forces",
-    "Dipole Moment", "Ionic Bonding", "OMC", "Analytical Chemistry", "Qualitative Inorganic"
-  ],
-  Organic: [
-    "Pre-GOC", "GOC (Ved)", "IUPAC", "Name Reactions (Ved)", "Retro Synthesis", "Aromaticity (Ved)",
-    "Qualitative Organic", "Reaction Mechanism Lect", "Acid-Base (Organic)", "Reagents", "Carbene",
-    "Free Radical", "Nitrene", "Heterocyclic", "Biomolecules", "Organic Photochemistry",
-    "SpectroChemistry", "IR Spectra", "UV Spectra", "NMR", "NMR Spectra", "Pericyclic"
-  ]
-};
+const revisionTopics = [
+  // --- Physical Chemistry ---
+  "Basic Math",
+  "Mole Concept",
+  "Redox",
+  "Atomic Structure",
+  "Electrochemistry",
+  "Thermodynamics",
+  "Thermochemistry",
+  "Ionic Equilibrium",
+  "Chemical Equilibrium",
+  "Phase Equilibrium",
+  "Chemical Kinetics",
+  "Solutions and Colligative Properties",
+  "Solid State",
+  "Surface Chemistry",
+  "Quantum Chemistry",
+  "Gaseous State",
+  "Conductance",
+  "Nuclear Chemistry",
+  "Physical Spectroscopy",
 
-function loadRevisionTracker() {
-  revisionEl.innerHTML = "";
+  // --- Inorganic Chemistry ---
+  "Basic Inorganic Chemistry",
+  "Chemical Bonding",
+  "Periodic Properties",
+  "Basic Chemical Bonding",
+  "D-Block",
+  "F-Block",
+  "Main Group",
+  "OMC",
+  "Coordination Chemistry",
+  "Analytical Chemistry",
+  "Metallurgy",
+  "Bio Inorganic",
+  "Acid-Base & Solvent Theory",
 
-  Object.entries(syllabusData).forEach(([category, topics]) => {
-    const section = document.createElement("div");
-    section.className = "rev-category";
+  // --- Organic Chemistry ---
+  "GOC",
+  "IUPAC",
+  "Stereochemistry",
+  "Reaction Mechanism",
+  "Reagents",
+  "Name Reactions",
+  "Pericyclic",
+  "Heterocyclic"
+];
 
-    const title = document.createElement("h3");
-    title.className = "rev-title";
-    title.textContent = category + " Chemistry ▾";
-    title.addEventListener("click", () => {
-      body.classList.toggle("hidden");
-    });
+const trackerContainer = document.getElementById("revision-tracker");
+const progressBar = document.getElementById("revision-progress-bar");
 
-    const body = document.createElement("div");
-    body.className = "rev-topic-list";
+function renderRevisionTracker() {
+  trackerContainer.innerHTML = "";
+  let total = 0;
+  let completed = 0;
 
-    topics.forEach((topic, i) => {
-      const row = document.createElement("div");
-      row.className = "rev-item";
+  revisionTopics.forEach(topic => {
+    const topicKey = topic.replace(/\s+/g, "-").toLowerCase();
 
-      const label = document.createElement("span");
-      label.textContent = topic;
-      row.appendChild(label);
+    const card = document.createElement("div");
+    card.className = "revision-card";
+    card.innerHTML = `<h3>${topic}</h3>`;
 
-      for (let r = 1; r <= 4; r++) {
-        const id = `rev-${category}-${i}-r${r}`;
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.checked = localStorage.getItem(id) === "true";
-        checkbox.addEventListener("change", () => {
-          localStorage.setItem(id, checkbox.checked);
-          updateRevProgress();
-        });
-        row.appendChild(checkbox);
-      }
+    for (let round = 1; round <= 3; round++) {
+      const inputId = `rev-${topicKey}-r${round}`;
+      const isChecked = localStorage.getItem(inputId) === "true";
 
-      body.appendChild(row);
-    });
+      const label = document.createElement("label");
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = isChecked;
+      checkbox.dataset.key = inputId;
 
-    section.appendChild(title);
-    section.appendChild(body);
-    revisionEl.appendChild(section);
+      checkbox.addEventListener("change", () => {
+        localStorage.setItem(inputId, checkbox.checked);
+        updateProgress();
+      });
+
+      label.appendChild(checkbox);
+      label.appendChild(document.createTextNode(` Round ${round}`));
+      card.appendChild(label);
+
+      total++;
+      if (isChecked) completed++;
+    }
+
+    trackerContainer.appendChild(card);
   });
 
-  updateRevProgress();
+  updateProgress();
 }
 
-function updateRevProgress() {
-  const inputs = document.querySelectorAll("#revision-tracker input[type='checkbox']");
-  const checked = [...inputs].filter(i => i.checked).length;
-  const percent = Math.floor((checked / inputs.length) * 100);
-  const bar = document.getElementById("revision-progress-bar");
-  bar.style.width = percent + "%";
-  bar.textContent = percent + "%";
+function updateProgress() {
+  const allCheckboxes = document.querySelectorAll("#revision-tracker input[type='checkbox']");
+  const total = allCheckboxes.length;
+  const checked = Array.from(allCheckboxes).filter(cb => cb.checked).length;
+  const percent = total > 0 ? Math.floor((checked / total) * 100) : 0;
+
+  progressBar.style.width = `${percent}%`;
+  progressBar.textContent = `${percent}%`;
 }
 
-loadRevisionTracker();
+renderRevisionTracker();

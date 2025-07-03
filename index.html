@@ -8,43 +8,49 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
+  <!-- Sidebar -->
+  <nav class="sidebar">
     <ul>
       <li><a href="index.html" class="active">🏠 Dashboard</a></li>
       <li><a href="syllabus.html">📘 Syllabus</a></li>
       <li><a href="planner.html">📅 Weekly Plan</a></li>
       <li><a href="revision.html">🔁 Revision</a></li>
       <li><a href="pyq.html">📄 PYQs</a></li>
-      <li><a href="mistakes.html">❗Mistakes</a></li>
+      <li><a href="mistakes.html">❗ Mistakes</a></li>
       <li><a href="practicals.html">🧪 Practicals</a></li>
     </ul>
   </nav>
 
-  <main class="container">
-    <h1>🎯 JAM 2026 Dashboard</h1>
+  <!-- Main Content -->
+  <div class="content">
+    <div class="container">
+      <!-- Welcome Message -->
+      <h1 style="font-size: 2.2rem; margin-bottom: 0;">Welcome Ishu ❤️</h1>
+      <p class="subtext">This website is for your prep</p>
 
-    <!-- Countdown -->
-    <div class="card">
-      <h2>⏳ Countdown to JAM 2026</h2>
-      <p id="countdown">Loading...</p>
-    </div>
+      <!-- Countdown Card -->
+      <div class="card">
+        <h2>⏳ Countdown to JAM 2026</h2>
+        <p id="countdown">Loading...</p>
+      </div>
 
-    <!-- Progress Overview -->
-    <div class="card">
-      <h2>📘 Syllabus Progress</h2>
-      <div class="progress-container">
-        <div id="syllabus-progress-bar" class="progress-bar">0%</div>
+      <!-- Syllabus Progress -->
+      <div class="card">
+        <h2>📘 Syllabus Progress</h2>
+        <div class="progress-container">
+          <div id="syllabus-progress-bar" class="progress-bar">0%</div>
+        </div>
+      </div>
+
+      <!-- Revision Progress -->
+      <div class="card">
+        <h2>🔁 Revision Progress</h2>
+        <div class="progress-container">
+          <div id="revision-progress-bar" class="progress-bar">0%</div>
+        </div>
       </div>
     </div>
-
-    <div class="card">
-      <h2>🔁 Revision Progress</h2>
-      <div class="progress-container">
-        <div id="revision-progress-bar" class="progress-bar">0%</div>
-      </div>
-    </div>
-  </main>
+  </div>
 
   <script src="js/dashboard.js"></script>
 </body>

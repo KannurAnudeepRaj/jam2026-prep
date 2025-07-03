@@ -24,15 +24,19 @@
   <!-- Page Content -->
   <main class="container">
     <h1>🔁 Revision Tracker</h1>
-    <p class="subtext">Track your revision rounds for each topic.</p>
+    <p class="subtext">Track your revision rounds and progress for each topic. You can log up to 3 rounds per topic.</p>
 
-    <div id="revision-progress-container">
-      <div id="revision-progress-bar"></div>
+    <!-- Progress Bar -->
+    <div id="revision-progress-container" class="revision-progress-container">
+      <div id="revision-progress-bar" class="revision-progress-bar">0%</div>
     </div>
 
-    <div id="revision-tracker"></div>
+    <!-- Tracker Cards -->
+    <div id="revision-tracker" class="revision-grid"></div>
   </main>
 
   <script src="js/revision.js"></script>
 </body>
 </html>
+<!-- This is the revision tracker page for the JAM 2026 preparation website. It allows users to track their revision rounds and progress for each topic. -->
+<!-- The page includes a progress bar that updates as users log their revision rounds. -->

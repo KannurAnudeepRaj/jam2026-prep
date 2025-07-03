@@ -1,270 +1,605 @@
-body {
+/* Import Inter or Poppins if needed */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: #f5f7fb;
-  color: #333;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #fafafa;
+  color: #2b2b2b;
+  line-height: 1.6;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+  width: 220px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  padding: 2rem 1rem;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin-bottom: 1.2rem;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  display: block;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+  background-color: #f2f2f2;
+}
+
+.sidebar a.active {
+  background-color: #6c63ff;
+  color: white;
+}
+
+/* --- Main Content Area --- */
+.content {
+  flex: 1;
+  padding: 2rem 3rem;
+  overflow-y: auto;
 }
 
 .container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
+/* Subtext */
 .subtext {
-  font-size: 1.1rem;
   color: #666;
-  margin-bottom: 40px;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
 }
 
-.countdown-box {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.countdown-box h2 {
-  margin-bottom: 15px;
-}
-
-.countdown-timer {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #6c63ff;
-}
-#syllabus-progress-container {
-  background: #e0e0e0;
-  height: 20px;
+/* --- Cards --- */
+.card {
+  background-color: white;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
-  margin-bottom: 25px;
-  overflow: hidden;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s ease;
 }
 
-#syllabus-progress-bar {
-  background: linear-gradient(to right, #6c63ff, #a970ff);
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+/* --- Progress Bar --- */
+.progress-container {
+  width: 100%;
+  background-color: #f0f0f0;
+  height: 24px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-top: 0.8rem;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #6c63ff, #ff69b4);
   height: 100%;
   width: 0%;
   color: white;
   text-align: center;
-  font-size: 0.9rem;
-  line-height: 20px;
-  transition: width 0.3s ease;
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 0.85rem;
+  transition: width 0.3s ease-in-out;
 }
 
-.syllabus-category {
-  margin-bottom: 30px;
-  text-align: left;
-}
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
 
-.syllabus-title {
-  font-size: 1.2rem;
-  color: #6c63ff;
-  cursor: pointer;
-}
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
 
-.syllabus-topic-list {
-  margin-top: 10px;
-  padding-left: 10px;
-}
+  .content {
+    padding: 1.5rem;
+  }
 
-.syllabus-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 6px 0;
+  .container {
+    max-width: 100%;
+  }
 }
-.week-entry {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-bottom: 20px;
+/* --- Calendar Section --- */
+#calendar {
+  background-color: white;
+  padding: 1rem;
   border-radius: 12px;
-  background: #f9f9ff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
 }
 
-.week-header {
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.week-entry textarea {
-  width: 100%;
-  height: 60px;
-  margin-bottom: 10px;
-  padding: 10px;
-  font-family: inherit;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  resize: vertical;
-}
-
-.week-checkbox {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-#revision-progress-container {
-  width: 100%;
-  height: 25px;
-  background: #ddd;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  overflow: hidden;
-}
-
-#revision-progress-bar {
-  height: 100%;
-  background: linear-gradient(90deg, #ff69b4, #9370db);
-  color: white;
-  text-align: center;
-  line-height: 25px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-
-.rev-category {
-  margin-bottom: 30px;
-}
-
-.rev-title {
-  font-size: 1.2em;
-  cursor: pointer;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.rev-topic-list {
-  padding-left: 15px;
-}
-
-.rev-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 6px 0;
-}
+/* --- Mistake Form --- */
 .form-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  background: #f9f9f9;
-  padding: 20px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
   border-radius: 10px;
-  margin-bottom: 25px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.form-section p {
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
 }
 
 .form-section label {
-  display: flex;
-  flex-direction: column;
+  display: block;
+  margin-bottom: 1rem;
   font-weight: 500;
+  color: #333;
+}
+
+.form-section input[type="text"],
+.form-section textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fafafa;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+}
+
+.form-section textarea {
+  resize: vertical;
 }
 
 .form-section button {
-  padding: 10px;
-  background: linear-gradient(90deg, #ff69b4, #9370db);
+  background-color: #6c63ff;
   color: white;
   border: none;
-  border-radius: 8px;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
-  font-weight: bold;
+  transition: background 0.2s ease;
 }
 
+.form-section button:hover {
+  background-color: #574bdf;
+}
+
+/* --- Mistake List --- */
 .log-list {
   list-style: none;
   padding: 0;
 }
 
-.pyq-item {
-  background: #fff;
-  margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  position: relative;
+.log-list li {
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-left: 4px solid #ff6961;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
 
-.delete-pyq {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-.mistake-item {
-  background: #fff;
-  margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  position: relative;
+.log-list li strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: #222;
+  font-weight: 600;
 }
 
-.delete-mistake {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
+.log-list li span {
+  display: block;
+  color: #555;
+  font-size: 0.95rem;
 }
-.practical-item {
-  background: #fff;
-  margin-bottom: 15px;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  position: relative;
-}
-
-.practical-item a {
-  font-weight: bold;
-  font-size: 16px;
-  color: #0077cc;
-  text-decoration: none;
-}
-
-.practical-note {
-  margin-top: 5px;
-  font-style: italic;
-  color: #666;
-}
-
-.delete-practical {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  background: transparent;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
-.card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-}
-
-.progress-container {
-  background: #eee;
-  border-radius: 30px;
+/* --- Weekly Planner Page --- */
+.planner-progress-container {
+  width: 100%;
+  background: #f0f0f0;
+  border-radius: 40px;
   overflow: hidden;
-  height: 24px;
-  margin-top: 10px;
+  height: 22px;
+  margin: 1.5rem 0 2rem;
+  border: 1px solid #ddd;
 }
 
-.progress-bar {
+.planner-progress-bar {
   height: 100%;
-  background: linear-gradient(90deg, #8a2be2, #ff69b4);
+  background: linear-gradient(to right, #6c63ff, #ff69b4);
   color: #fff;
   font-weight: bold;
-  line-height: 24px;
+  font-size: 0.9rem;
+  line-height: 22px;
   text-align: center;
-  transition: width 0.5s ease;
+  transition: width 0.3s ease;
+}
+
+/* Grid layout */
+.week-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+/* Each week card */
+.week-card {
+  background: #fff;
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.week-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.week-card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.week-card p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.week-card label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.week-card input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #6c63ff;
+  cursor: pointer;
+}
+/* --- Practicals Page --- */
+.form-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.form-section label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.form-section input[type="text"],
+.form-section input[type="url"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fdfdfd;
+  transition: border-color 0.2s;
+}
+
+.form-section input:focus {
+  outline: none;
+  border-color: #6c63ff;
+}
+
+.form-section button {
+  padding: 10px 16px;
+  border: none;
+  background: linear-gradient(to right, #6c63ff, #ff69b4);
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-section button:hover {
+  background: linear-gradient(to right, #5a52d4, #f55fa9);
+}
+
+/* Practical Log List */
+.log-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.log-list li {
+  background: #fff;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  position: relative;
+}
+
+.log-list li strong {
+  color: #222;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.log-list li a {
+  color: #6c63ff;
+  word-break: break-word;
+  text-decoration: underline;
+  font-size: 0.95rem;
+}
+
+.log-list li p {
+  margin: 6px 0 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+/* --- PYQ Page --- */
+.form-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.form-section label {
+  display: block;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.form-section input[type="text"],
+.form-section input[type="number"],
+.form-section input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #fdfdfd;
+  transition: border-color 0.2s;
+}
+
+.form-section input:focus {
+  outline: none;
+  border-color: #6c63ff;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  margin-top: -6px;
+  margin-bottom: 1rem;
+}
+
+.form-section button {
+  padding: 10px 16px;
+  border: none;
+  background: linear-gradient(to right, #6c63ff, #ff69b4);
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.form-section button:hover {
+  background: linear-gradient(to right, #5a52d4, #f55fa9);
+}
+
+/* PYQ Log List */
+.log-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.log-list li {
+  background: #fff;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.log-list li strong {
+  color: #222;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.log-list li span {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #555;
+}
+/* --- Revision Tracker Styles --- */
+.revision-progress-container {
+  background: #eee;
+  height: 24px;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 1.5rem 0 2rem 0;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
+  border: 1px solid #e0e0e0;
+}
+
+.revision-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #6c63ff, #ff69b4);
+  color: white;
+  font-weight: 600;
+  text-align: center;
+  line-height: 24px;
+  transition: width 0.4s ease;
+  border-radius: 999px;
+}
+
+/* Grid of topics */
+.revision-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* Each topic card */
+.revision-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.revision-card:hover {
+  transform: translateY(-2px);
+}
+
+.revision-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+  color: #333;
+}
+
+.revision-card label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.revision-card input[type="checkbox"] {
+  margin-right: 6px;
+  transform: scale(1.2);
+}
+/* ========== Syllabus Tracker Styles ========== */
+
+#syllabus-progress-container {
+  background-color: #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0;
+  height: 24px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+#syllabus-progress-bar {
+  background: linear-gradient(90deg, #7f5af0, #d66efd);
+  height: 100%;
+  color: white;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 24px;
+  border-radius: 8px 0 0 8px;
+  transition: width 0.3s ease;
+}
+
+/* ========== Syllabus List Grid ========== */
+
+#syllabus-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Section Headers */
+
+.syllabus-section {
+  background-color: #f8fafc;
+  border-left: 4px solid #7f5af0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Individual Topic Cards */
+
+.syllabus-topic {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+  box-shadow: 0 0 0 1px transparent;
+}
+
+.syllabus-topic:hover {
+  background-color: #f9fafb;
+  box-shadow: 0 0 0 1px #dcdcdc;
+}
+
+.syllabus-topic input[type="checkbox"] {
+  transform: scale(1.2);
+  accent-color: #7f5af0;
 }

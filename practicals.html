@@ -21,16 +21,29 @@
     </ul>
   </nav>
 
+  <!-- Main Content -->
   <main class="container">
     <h1>🧪 Virtual Practicals</h1>
+    <p class="subtext">Add simulation links and notes. All data is saved forever unless manually deleted.</p>
 
+    <!-- Form -->
     <form id="practical-form" class="form-section">
-      <label>Title: <input type="text" name="title" required></label>
-      <label>URL: <input type="url" name="url" required></label>
-      <label>Note (optional): <input type="text" name="note"></label>
+      <label>
+        Title:
+        <input type="text" name="title" placeholder="e.g. Titration Simulator" required />
+      </label>
+      <label>
+        URL:
+        <input type="url" name="url" placeholder="https://..." required />
+      </label>
+      <label>
+        Note (optional):
+        <input type="text" name="note" placeholder="e.g. Focus on equivalence point" />
+      </label>
       <button type="submit">➕ Add Practical</button>
     </form>
 
+    <!-- List of Practicals -->
     <ul id="practical-list" class="log-list"></ul>
   </main>
 

@@ -5,34 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mistake Journal – JAM 2026</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css">
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
+  <!-- Sidebar -->
+  <nav class="sidebar">
     <ul>
       <li><a href="index.html">🏠 Dashboard</a></li>
       <li><a href="syllabus.html">📘 Syllabus</a></li>
       <li><a href="planner.html">📅 Weekly Plan</a></li>
       <li><a href="revision.html">🔁 Revision</a></li>
       <li><a href="pyq.html">📄 PYQs</a></li>
-      <li><a href="mistakes.html" class="active">❗Mistakes</a></li>
+      <li><a href="mistakes.html" class="active">❗ Mistakes</a></li>
       <li><a href="practicals.html">🧪 Practicals</a></li>
     </ul>
   </nav>
 
-  <main class="container">
-    <h1>❗ Mistake Journal</h1>
-    <form id="mistake-form" class="form-section">
-      <label>Date: <input type="date" name="date" required></label>
-      <label>Topic: <input type="text" name="topic" placeholder="Topic name" required></label>
-      <label>Mistake: <textarea name="mistake" rows="3" required></textarea></label>
-      <button type="submit">➕ Add Mistake</button>
-    </form>
+  <div class="content">
+    <div class="container">
+      <h1>❗ Mistake Journal</h1>
 
-    <ul id="mistake-list" class="log-list"></ul>
-  </main>
+      <!-- Calendar -->
+      <div id="calendar" style="margin-bottom: 40px;"></div>
 
+      <!-- Mistake Form (only appears after selecting a date) -->
+      <form id="mistake-form" class="form-section" style="display: none;">
+        <input type="hidden" id="mistake-date" />
+        <p><strong>Selected Date:</strong> <span id="selected-date-label"></span></p>
+        <label>Topic: <input type="text" id="mistake-topic" placeholder="Topic name" required></label>
+        <label>Mistake: <textarea id="mistake-text" rows="3" required></textarea></label>
+        <button type="submit">➕ Add Mistake</button>
+      </form>
+
+      <!-- Mistake List -->
+      <ul id="mistake-list" class="log-list"></ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
   <script src="js/mistakes.js"></script>
 </body>
 </html>
