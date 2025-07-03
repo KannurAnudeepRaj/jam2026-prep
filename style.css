@@ -603,16 +603,4 @@ body {
   transform: scale(1.2);
   accent-color: #7f5af0;
 }
-:root {
-  --bg: #121212;
-  --card-bg: #1e1e1e;
-  --text: #ffffff;
-  --muted: #cccccc;
-  --accent: linear-gradient(to right, #a18cd1, #fbc2eb); /* pink-purple */
-  --accent-solid: #e67cb3;
-}
 
-body {
-  background-color: var(--bg);
-  color: var(--text);
-}
