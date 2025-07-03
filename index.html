@@ -34,11 +34,30 @@
       <p><span id="countdown"></span> left until JAM 2026.</p>
     </section>
 
+    
     <!-- Syllabus Tracker -->
     <section id="syllabus" class="panel">
       <h2>📚 Syllabus Tracker</h2>
-      <div id="syllabus-list"></div>
+      <input type="text" id="searchInput" placeholder="Search topics..." />
+
+     <div class="syllabus-section">
+        <details open>
+          <summary>📗 Physical Chemistry</summary>
+          <ul id="syllabus-physical"></ul>
+        </details>
+        <details open>
+          <summary>📘 Inorganic Chemistry</summary>
+         <ul id="syllabus-inorganic"></ul>
+        </details>
+       <details open>
+          <summary>📙 Organic Chemistry</summary>
+         <ul id="syllabus-organic"></ul>
+       </details>
+     </div>
+
+  <p id="syllabus-progress">Progress: 0%</p>
     </section>
+
 
     <!-- Weekly Planner -->
     <section id="planner" class="panel">
