@@ -541,3 +541,51 @@ ul li {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   color: #fff;
 }
+#syllabus-list input[type="text"] {
+  padding: 8px;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+#progress-bar-container {
+  width: 100%;
+  background: #eee;
+  height: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #7e57c2, #ec407a);
+  color: #fff;
+  text-align: center;
+  font-size: 0.8rem;
+  line-height: 20px;
+  transition: width 0.3s ease;
+}
+
+.syllabus-category {
+  margin-bottom: 1.5rem;
+}
+
+.syllabus-title {
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.syllabus-topic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.syllabus-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
