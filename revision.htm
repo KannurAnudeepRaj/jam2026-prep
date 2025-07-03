@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Syllabus Tracker – JAM 2026</title>
+  <title>Revision Tracker – JAM 2026</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -12,9 +12,9 @@
   <nav class="navbar">
     <ul>
       <li><a href="index.html">🏠 Dashboard</a></li>
-      <li><a href="syllabus.html" class="active">📘 Syllabus</a></li>
+      <li><a href="syllabus.html">📘 Syllabus</a></li>
       <li><a href="planner.html">📅 Weekly Plan</a></li>
-      <li><a href="revision.html">🔁 Revision</a></li>
+      <li><a href="revision.html" class="active">🔁 Revision</a></li>
       <li><a href="pyq.html">📄 PYQs</a></li>
       <li><a href="mistakes.html">❗Mistakes</a></li>
       <li><a href="practicals.html">🧪 Practicals</a></li>
@@ -23,16 +23,16 @@
 
   <!-- Page Content -->
   <main class="container">
-    <h1>📘 Syllabus Tracker</h1>
-    <p class="subtext">Tick off topics as you complete them. Your progress is saved automatically.</p>
+    <h1>🔁 Revision Tracker</h1>
+    <p class="subtext">Track your revision rounds for each topic.</p>
 
-    <div id="syllabus-progress-container">
-      <div id="syllabus-progress-bar">0%</div>
+    <div id="revision-progress-container">
+      <div id="revision-progress-bar"></div>
     </div>
 
-    <div id="syllabus-list"></div>
+    <div id="revision-tracker"></div>
   </main>
 
-  <script src="js/syllabus.js"></script>
+  <script src="js/revision.js"></script>
 </body>
 </html>

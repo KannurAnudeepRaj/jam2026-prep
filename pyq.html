@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PYQ Log – JAM 2026</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="index.html">🏠 Dashboard</a></li>
+      <li><a href="syllabus.html">📘 Syllabus</a></li>
+      <li><a href="planner.html">📅 Weekly Plan</a></li>
+      <li><a href="revision.html">🔁 Revision</a></li>
+      <li><a href="pyq.html" class="active">📄 PYQs</a></li>
+      <li><a href="mistakes.html">❗Mistakes</a></li>
+      <li><a href="practicals.html">🧪 Practicals</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <h1>📄 PYQ Log</h1>
+    <form id="pyq-form" class="form-section">
+      <label>Date: <input type="date" name="date" required></label>
+      <label>Type: <input type="text" name="type" placeholder="Full Test / Sectional" required></label>
+      <label>Score: <input type="number" name="score" required></label>
+      <label>Topics: <input type="text" name="topics" placeholder="Chapters or keywords" required></label>
+      <label><input type="checkbox" name="mistake" /> Mistake Made</label>
+      <button type="submit">➕ Add Log</button>
+    </form>
+
+    <ul id="pyq-log-list" class="log-list"></ul>
+  </main>
+
+  <script src="js/pyq.js"></script>
+</body>
+</html>

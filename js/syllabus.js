@@ -1,4 +1,3 @@
-// --- Syllabus Data ---
 const syllabusData = {
   Physical: [
     "Basic Maths", "Mole Concept", "Thermochemistry", "Thermodynamics (Ved)", "Thermodynamics (Pradeep)",
@@ -22,14 +21,12 @@ const syllabusData = {
 };
 
 const syllabusContainer = document.getElementById("syllabus-list");
+const progressBar = document.getElementById("syllabus-progress-bar");
 
 function loadSyllabusTracker() {
-  syllabusContainer.innerHTML = `
-    <input type="text" id="syllabus-search" placeholder="Search topics..." />
-    <div id="progress-bar-container">
-      <div id="progress-bar"></div>
-    </div>
-  `;
+  syllabusContainer.innerHTML = "";
+  let total = 0;
+  let completed = 0;
 
   Object.entries(syllabusData).forEach(([category, topics]) => {
     const section = document.createElement("div");
@@ -48,6 +45,8 @@ function loadSyllabusTracker() {
     topics.forEach((topic, index) => {
       const id = `${category}-${index}`;
       const checked = localStorage.getItem(id) === "true";
+      if (checked) completed++;
+      total++;
 
       const label = document.createElement("label");
       label.className = "syllabus-item";
@@ -55,10 +54,12 @@ function loadSyllabusTracker() {
         <input type="checkbox" id="${id}" ${checked ? "checked" : ""} />
         <span>${topic}</span>
       `;
-      label.querySelector("input").addEventListener("change", (e) => {
-        localStorage.setItem(id, e.target.checked);
+      const checkbox = label.querySelector("input");
+      checkbox.addEventListener("change", () => {
+        localStorage.setItem(id, checkbox.checked);
         updateProgress();
       });
+
       topicList.appendChild(label);
     });
 
@@ -71,21 +72,11 @@ function loadSyllabusTracker() {
     const inputs = document.querySelectorAll("#syllabus-list input[type='checkbox']");
     const checked = [...inputs].filter(i => i.checked).length;
     const percent = Math.floor((checked / inputs.length) * 100);
-    document.getElementById("progress-bar").style.width = percent + "%";
-    document.getElementById("progress-bar").textContent = percent + "%";
+    progressBar.style.width = percent + "%";
+    progressBar.textContent = percent + "%";
   }
 
   updateProgress();
-
-  const searchInput = document.getElementById("syllabus-search");
-  searchInput.addEventListener("input", (e) => {
-    const term = e.target.value.toLowerCase();
-    const items = document.querySelectorAll(".syllabus-item");
-    items.forEach(item => {
-      const match = item.textContent.toLowerCase().includes(term);
-      item.style.display = match ? "flex" : "none";
-    });
-  });
 }
 
 loadSyllabusTracker();
