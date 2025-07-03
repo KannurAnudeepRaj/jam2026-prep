@@ -8,32 +8,34 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar">
+  <!-- Sidebar -->
+  <nav class="sidebar">
     <ul>
       <li><a href="index.html">🏠 Dashboard</a></li>
       <li><a href="syllabus.html" class="active">📘 Syllabus</a></li>
       <li><a href="planner.html">📅 Weekly Plan</a></li>
       <li><a href="revision.html">🔁 Revision</a></li>
       <li><a href="pyq.html">📄 PYQs</a></li>
-      <li><a href="mistakes.html">❗Mistakes</a></li>
+      <li><a href="mistakes.html">❗ Mistakes</a></li>
       <li><a href="practicals.html">🧪 Practicals</a></li>
     </ul>
   </nav>
 
-  <!-- Page Content -->
-  <main class="container">
-    <h1>📘 Syllabus Tracker</h1>
-    <p class="subtext">Tick off each topic as you finish it. Your progress is saved automatically in your browser.</p>
+  <!-- Main Content -->
+  <div class="content">
+    <div class="container">
+      <h1>📘 Syllabus Tracker</h1>
+      <p class="subtext">Tick off each topic as you finish it. Your progress is saved automatically in your browser.</p>
 
-    <!-- Progress Bar -->
-    <div id="syllabus-progress-container">
-      <div id="syllabus-progress-bar">0%</div>
+      <!-- Progress Bar -->
+      <div id="syllabus-progress-container">
+        <div id="syllabus-progress-bar">0%</div>
+      </div>
+
+      <!-- Syllabus List -->
+      <div id="syllabus-list"></div>
     </div>
-
-    <!-- Syllabus List -->
-    <div id="syllabus-list"></div>
-  </main>
+  </div>
 
   <!-- JS -->
   <script src="js/syllabus.js"></script>
