@@ -61,26 +61,30 @@ mistakeForm.addEventListener("submit", (e) => {
   saveMistakes();
 });
 
-// ---  Syllabus Tracker ---
+// --- Syllabus Tracker ---
 const syllabusData = {
   Physical: [
-    "Basic Maths", "Mole Concept", "Thermochemistry", "Thermodynamics (Ved)", "Thermodynamics (Pradeep)",
-    "Liquid State", "Solid State", "Gaseous State", "Phase Equilibrium", "Colligative Properties (CP)",
+    "Basic Maths", "Mole Concept", "Thermochemistry", "Thermodynamics (Ved Sir)",
+    "Thermodynamics (Pradeep Sir)", "Liquid State", "Solid State (Pradeep Sir)",
+    "Gaseous State", "Phase Equilibrium", "Solutions and Colligative Properties",
     "Chemical Kinetics", "Surface Chemistry", "Ionic Equilibrium", "Chemical Equilibrium",
-    "Acid-Base Theory", "Redox", "Potentiometric Titration", "Conductance",
-    "Quantum Chemistry", "Atomic Structure", "Statistical Thermo", "Physical Spectra"
+    "Acid-Base", "Redox", "Potentiometric Titration", "Conductance", "Nuclear Chemistry (Pradeep Sir)",
+    "Quantum Chemistry", "Atomic Structure", "Statistical Thermodynamics", "Physical Spectroscopy"
   ],
   Inorganic: [
-    "Basic Inorganic", "Periodic Properties", "Chemical Bonding (Basic)", "Chemical Bonding (Ved)",
-    "MOT", "MOT (Ved)", "Acid-Base & Solvent Theory", "D-Block", "F-Block", "Main Group (Ved)",
-    "Metallurgy", "Coordination Chemistry (Ved)", "Basic Coordination", "Bio Inorganic", "Weak Forces",
-    "Dipole Moment", "Ionic Bonding", "OMC", "Analytical Chemistry", "Qualitative Inorganic"
+    "Basic Inorganic Chemistry", "Periodic Properties", "Basic Chemical Bonding",
+    "Chemical Bonding (Ved Sir)", "MOT", "MOT (Ved Sir)", "Acid-Base & Solvent Theory",
+    "Main Group (Ved Sir)", "D Block", "F Block", "Metallurgy", "Coordination Chemistry (Ved Sir)",
+    "Basic Coordination", "OMC", "Bio Inorganic", "Weak Forces", "Dipole Moment",
+    "Ionic Bonding", "Analytical Chemistry", "Qualitative Inorganic"
   ],
   Organic: [
-    "Pre-GOC", "GOC (Ved)", "IUPAC", "Name Reactions (Ved)", "Retro Synthesis", "Aromaticity (Ved)",
-    "Qualitative Organic", "Reaction Mechanism Lect", "Acid-Base (Organic)", "Reagents", "Carbene",
-    "Free Radical", "Nitrene", "Heterocyclic", "Biomolecules", "Organic Photochemistry",
-    "SpectroChemistry", "IR Spectra", "UV Spectra", "NMR", "NMR Spectra", "Pericyclic"
+    "Pre-GOC", "GOC", "GOC (Ved Sir)", "IUPAC", "Name Reactions (Ved Sir)", "Retro Synthesis",
+    "Aromaticity (Ved Sir)", "Qualitative Organic", "Protection & Deprotection",
+    "Acid-Base (Organic)", "Reaction Mechanism Lecture", "Reagents", "Carbene", "Nitrene",
+    "Free Radical", "Heterocyclic", "Biomolecules", "Organic Photochemistry",
+    "IR Spectroscopy (Pradeep Sir)", "UV Spectroscopy (Pradeep Sir)", "SpectroChemistry",
+    "NMR", "NMR Spectra", "Pericyclic"
   ]
 };
 
@@ -103,13 +107,14 @@ function loadSyllabusTracker() {
 
     const title = document.createElement("h3");
     title.className = "syllabus-title";
-    title.textContent = category + " Chemistry ▾";
-    title.addEventListener("click", () => {
-      topicList.classList.toggle("hidden");
-    });
+    title.textContent = category + " Chemistry \u25BE";
 
     const topicList = document.createElement("div");
     topicList.className = "syllabus-topic-list";
+
+    title.addEventListener("click", () => {
+      topicList.classList.toggle("hidden");
+    });
 
     topics.forEach((topic, index) => {
       const id = `${category}-${index}`;
@@ -139,13 +144,14 @@ function loadSyllabusTracker() {
     const inputs = document.querySelectorAll("#syllabus-list input[type='checkbox']");
     const checked = [...inputs].filter(i => i.checked).length;
     const percent = Math.floor((checked / inputs.length) * 100);
-    document.getElementById("progress-bar").style.width = percent + "%";
-    document.getElementById("progress-bar").textContent = percent + "%";
+    const bar = document.getElementById("progress-bar");
+    bar.style.width = percent + "%";
+    bar.textContent = percent + "%";
   }
 
   updateProgress();
 
-  // Search
+  // Search Functionality
   const searchInput = document.getElementById("syllabus-search");
   searchInput.addEventListener("input", (e) => {
     const term = e.target.value.toLowerCase();
