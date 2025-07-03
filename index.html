@@ -1,46 +1,120 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ishwarya's JAM 2026 Chemistry Prep</title>
+  <title>JAM 2026 Prep – Chemistry Dashboard</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="navbar">
+  <header>
     <h1>JAM 2026 Prep</h1>
     <nav>
-      <ul class="nav-links">
+      <ul>
         <li><a href="#dashboard">Home</a></li>
         <li><a href="#syllabus">Syllabus Tracker</a></li>
-        <li><a href="#weekly">Weekly Planner</a></li>
+        <li><a href="#planner">Weekly Planner</a></li>
         <li><a href="#revision">Revision Tracker</a></li>
         <li><a href="#pyq">PYQ Log</a></li>
         <li><a href="#mistakes">Mistake Journal</a></li>
         <li><a href="#practicals">Virtual Practicals</a></li>
-        <li><a href="#resources">Resources</a></li>
-        <li><a href="#about">About</a></li>
+        <!-- <li><a href="#resources">Resources</a></li> -->
+        <li><a href="#about">About / Tips</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="container">
-    <section id="dashboard">
-      <h2>📘 Welcome, Ishwarya!</h2>
+  <main>
+    <!-- Dashboard -->
+    <section id="dashboard" class="panel">
+      <h2>Welcome, Ishwarya!</h2>
       <p>Your personalized IIT JAM 2026 Chemistry prep dashboard.</p>
-      <div id="countdown"></div>
+      <p><span id="countdown"></span> left until JAM 2026.</p>
     </section>
 
-    <!-- Placeholder sections (to be built out next) -->
-    <section id="syllabus"><h2>📚 Syllabus Tracker</h2></section>
-    <section id="weekly"><h2>🗓️ Weekly Planner</h2></section>
-    <section id="revision"><h2>🔁 Revision Tracker</h2></section>
-    <section id="pyq"><h2>📄 PYQ & Mock Log</h2></section>
-    <section id="mistakes"><h2>🚫 Mistake Journal</h2></section>
-    <section id="practicals"><h2>🧪 Virtual Practicals</h2></section>
-    <section id="resources"><h2>📦 Resources</h2></section>
-    <section id="about"><h2>💡 About / Tips</h2></section>
+    <!-- Syllabus Tracker -->
+    <section id="syllabus" class="panel">
+      <h2>📚 Syllabus Tracker</h2>
+      <div id="syllabus-list"></div>
+    </section>
+
+    <!-- Weekly Planner -->
+    <section id="planner" class="panel">
+      <h2>🗓️ Weekly Planner (July 2025 - Jan 2026)</h2>
+      <div id="weekly-planner"></div>
+    </section>
+
+    <!-- Revision Tracker -->
+    <section id="revision" class="panel">
+      <h2>🔁 Revision Tracker</h2>
+      <div id="revision-tracker"></div>
+    </section>
+
+    <!-- PYQ & Mock Log -->
+    <section id="pyq" class="panel">
+      <h2>📑 PYQ & Mock Log</h2>
+      <form id="pyq-form">
+        <input type="date" name="date" required />
+        <select name="type">
+          <option value="PYQ">PYQ</option>
+          <option value="Mock">Mock</option>
+        </select>
+        <input type="number" name="score" placeholder="Score" required />
+        <input type="text" name="topics" placeholder="Topics to revise" required />
+        <label><input type="checkbox" name="mistake" /> Mistakes Noted?</label>
+        <button type="submit">Add Log</button>
+      </form>
+      <ul id="pyq-log-list"></ul>
+    </section>
+
+    <!-- Mistake Journal -->
+    <section id="mistakes" class="panel">
+      <h2>❌ Mistake Journal</h2>
+      <form id="mistake-form">
+        <input type="date" name="date" required />
+        <input type="text" name="topic" placeholder="Topic" required />
+        <textarea name="mistake" placeholder="Mistake made..." required></textarea>
+        <button type="submit">Add Mistake</button>
+      </form>
+      <ul id="mistake-list"></ul>
+    </section>
+
+   <!-- Virtual Practicals -->
+  <section id="practicals" class="panel">
+      <h2>🔬 Virtual Practicals</h2>
+      <form id="practical-form">
+        <input type="text" name="title" placeholder="Site Name" required />
+       <input type="url" name="url" placeholder="https://example.com" required />
+        <textarea name="note" placeholder="Optional notes..."></textarea>
+        <button type="submit">➕ Add Resource</button>
+      </form>
+     <ul id="practical-list"></ul>
+    </section>
+
+    <!-- Resources 
+    <section id="resources" class="panel">
+      <h2>📎 Resources</h2>
+      <ul>
+        <li><a href="https://nptel.ac.in/" target="_blank">NPTEL Videos</a></li>
+        <li><a href="https://www.toppr.com/guides/chemistry/" target="_blank">Toppr Chemistry Guides</a></li>
+      </ul>
+    </section>
+    -->
+
+    <!-- About -->
+    <!-- About -->
+    <section id="about" class="panel">
+     <h2>ℹ️ About / Tips</h2>
+      <p>This dashboard was created with ❤️ to help Ishwarya crack JAM 2026 Chemistry.</p>
+      <ul class="tips-list">
+        <li>✅ Track mistakes honestly</li>
+        <li>📆 Do not skip weekly planners</li>
+       <li>🌱 Trust the process</li>
+     </ul>
+    </section>
+
   </main>
 
   <script src="main.js"></script>
