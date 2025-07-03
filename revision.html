@@ -6,37 +6,37 @@
   <title>Revision Tracker – JAM 2026</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="dark">
 
-  <!-- Navbar -->
-  <nav class="navbar">
+  <!-- Sidebar -->
+  <nav class="sidebar">
     <ul>
       <li><a href="index.html">🏠 Dashboard</a></li>
       <li><a href="syllabus.html">📘 Syllabus</a></li>
       <li><a href="planner.html">📅 Weekly Plan</a></li>
       <li><a href="revision.html" class="active">🔁 Revision</a></li>
       <li><a href="pyq.html">📄 PYQs</a></li>
-      <li><a href="mistakes.html">❗Mistakes</a></li>
+      <li><a href="mistakes.html">❗ Mistakes</a></li>
       <li><a href="practicals.html">🧪 Practicals</a></li>
     </ul>
   </nav>
 
-  <!-- Page Content -->
-  <main class="container">
-    <h1>🔁 Revision Tracker</h1>
-    <p class="subtext">Track your revision rounds and progress for each topic. You can log up to 3 rounds per topic.</p>
+  <!-- Main Content -->
+  <div class="content">
+    <div class="container">
+      <h1>🔁 Revision Tracker</h1>
+      <p class="subtext">Track your revision rounds and progress for each topic. You can log up to 3 rounds per topic.</p>
 
-    <!-- Progress Bar -->
-    <div id="revision-progress-container" class="revision-progress-container">
-      <div id="revision-progress-bar" class="revision-progress-bar">0%</div>
+      <!-- Progress Bar -->
+      <div id="revision-progress-container" class="revision-progress-container">
+        <div id="revision-progress-bar" class="revision-progress-bar">0%</div>
+      </div>
+
+      <!-- Tracker Cards -->
+      <div id="revision-tracker" class="revision-grid"></div>
     </div>
-
-    <!-- Tracker Cards -->
-    <div id="revision-tracker" class="revision-grid"></div>
-  </main>
+  </div>
 
   <script src="js/revision.js"></script>
 </body>
 </html>
-<!-- This is the revision tracker page for the JAM 2026 preparation website. It allows users to track their revision rounds and progress for each topic. -->
-<!-- The page includes a progress bar that updates as users log their revision rounds. -->

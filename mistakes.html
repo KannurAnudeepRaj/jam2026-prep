@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css">
 </head>
-<body>
+<body class="dark">
 
   <!-- Sidebar -->
   <nav class="sidebar">
@@ -22,6 +22,7 @@
     </ul>
   </nav>
 
+  <!-- Page Content -->
   <div class="content">
     <div class="container">
       <h1>❗ Mistake Journal</h1>
@@ -29,12 +30,18 @@
       <!-- Calendar -->
       <div id="calendar" style="margin-bottom: 40px;"></div>
 
-      <!-- Mistake Form (only appears after selecting a date) -->
+      <!-- Mistake Form -->
       <form id="mistake-form" class="form-section" style="display: none;">
         <input type="hidden" id="mistake-date" />
         <p><strong>Selected Date:</strong> <span id="selected-date-label"></span></p>
-        <label>Topic: <input type="text" id="mistake-topic" placeholder="Topic name" required></label>
-        <label>Mistake: <textarea id="mistake-text" rows="3" required></textarea></label>
+        <label>
+          Topic:
+          <input type="text" id="mistake-topic" placeholder="Topic name" required />
+        </label>
+        <label>
+          Mistake:
+          <textarea id="mistake-text" rows="3" placeholder="What mistake did you make?" required></textarea>
+        </label>
         <button type="submit">➕ Add Mistake</button>
       </form>
 

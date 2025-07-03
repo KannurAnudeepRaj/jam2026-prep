@@ -6,57 +6,57 @@
   <title>PYQ Log – JAM 2026</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body class="dark">
 
-  <!-- Navbar -->
-  <nav class="navbar">
+  <!-- Sidebar -->
+  <nav class="sidebar">
     <ul>
       <li><a href="index.html">🏠 Dashboard</a></li>
       <li><a href="syllabus.html">📘 Syllabus</a></li>
       <li><a href="planner.html">📅 Weekly Plan</a></li>
       <li><a href="revision.html">🔁 Revision</a></li>
       <li><a href="pyq.html" class="active">📄 PYQs</a></li>
-      <li><a href="mistakes.html">❗Mistakes</a></li>
+      <li><a href="mistakes.html">❗ Mistakes</a></li>
       <li><a href="practicals.html">🧪 Practicals</a></li>
     </ul>
   </nav>
 
   <!-- Main Content -->
-  <main class="container">
-    <h1>📄 PYQ Log</h1>
-    <p class="subtext">Log your past year questions and test analysis for better tracking.</p>
+  <div class="content">
+    <div class="container">
+      <h1>📄 PYQ Log</h1>
+      <p class="subtext">Log your past year questions and test analysis for better tracking.</p>
 
-    <!-- PYQ Form -->
-    <form id="pyq-form" class="form-section">
-      <label>
-        Date:
-        <input type="date" name="date" required>
-      </label>
-      <label>
-        Type:
-        <input type="text" name="type" placeholder="Full Test / Sectional" required>
-      </label>
-      <label>
-        Score:
-        <input type="number" name="score" placeholder="e.g. 42 / 60" required>
-      </label>
-      <label>
-        Topics:
-        <input type="text" name="topics" placeholder="Chapters / concepts covered" required>
-      </label>
-      <label class="checkbox-label">
-        <input type="checkbox" name="mistake">
-        Mistake Made?
-      </label>
-      <button type="submit">➕ Add Log</button>
-    </form>
+      <!-- PYQ Form -->
+      <form id="pyq-form" class="form-section">
+        <label>
+          Date:
+          <input type="date" name="date" required>
+        </label>
+        <label>
+          Type:
+          <input type="text" name="type" placeholder="Full Test / Sectional" required>
+        </label>
+        <label>
+          Score:
+          <input type="number" name="score" placeholder="e.g. 42 / 60" required>
+        </label>
+        <label>
+          Topics:
+          <input type="text" name="topics" placeholder="Chapters / concepts covered" required>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="mistake">
+          Mistake Made?
+        </label>
+        <button type="submit">➕ Add Log</button>
+      </form>
 
-    <!-- PYQ Entries -->
-    <ul id="pyq-log-list" class="log-list"></ul>
-  </main>
+      <!-- PYQ Entries -->
+      <ul id="pyq-log-list" class="log-list"></ul>
+    </div>
+  </div>
 
   <script src="js/pyq.js"></script>
 </body>
 </html>
-<!-- This is the PYQ log page for the JAM 2026 preparation website. It allows users to log their past year questions and test analysis. -->
-<!-- The form captures the date, type of test, score, topics covered, and whether any
